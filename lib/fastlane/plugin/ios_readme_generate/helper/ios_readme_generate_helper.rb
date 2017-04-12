@@ -4,6 +4,7 @@ module Fastlane
       # class methods that you define here become available in your action
       # as `Helper::IosReadmeGenerateHelper.your_method`
       #
+      attr_accessor :git_readme_generate
 
       def initialize
         self.git_readme_generate = "git-readme-generate"
