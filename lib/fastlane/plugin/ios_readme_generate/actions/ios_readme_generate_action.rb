@@ -2,7 +2,11 @@ module Fastlane
   module Actions
     class IosReadmeGenerateAction < Action
       def self.run(params)
-        UI.message("The ios_readme_generate plugin is working!")
+
+        ios_readme_generate = Helper::IosReadmeGenerateHelper.new()
+
+        ios_readme_generate.trigger(options: params)
+
       end
 
       def self.description
@@ -19,7 +23,7 @@ module Fastlane
 
       def self.details
         # Optional:
-        "create readme for orbis ios projects"
+        "Create readme for ios projects"
       end
 
       def self.available_options
