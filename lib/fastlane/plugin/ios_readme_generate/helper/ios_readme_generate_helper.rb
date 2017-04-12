@@ -5,7 +5,7 @@ module Fastlane
       # as `Helper::IosReadmeGenerateHelper.your_method`
       #
 
-      def initialize()
+      def initialize
         self.git_readme_generate = "git-readme-generate"
       end
 
