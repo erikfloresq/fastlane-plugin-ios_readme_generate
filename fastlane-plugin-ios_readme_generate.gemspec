@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = %q{erikfloresq@gmail.com}
 
   spec.summary       = %q{Create readme for ios projects}
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-ios_readme_generate"
+  spec.homepage      = "https://github.com/erikfloresq/fastlane-plugin-ios_readme_generate"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
