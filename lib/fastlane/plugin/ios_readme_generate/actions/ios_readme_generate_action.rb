@@ -3,7 +3,7 @@ module Fastlane
     class IosReadmeGenerateAction < Action
       def self.run(params)
 
-        ios_readme_generate = Helper::IosReadmeGenerateHelper.new()
+        ios_readme_generate = Helper::IosReadmeGenerateHelper.new
 
         ios_readme_generate.trigger(options: params)
 
