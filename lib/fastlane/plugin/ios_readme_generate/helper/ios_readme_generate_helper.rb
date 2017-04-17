@@ -10,8 +10,8 @@ module Fastlane
         self.git_readme_generate = "git-readme-generate"
       end
 
-      def trigger(options: nil, print_command: true, print_command_output: true)
-        app_name = options[:app_name]
+      def trigger(options: nil, print_command: true, print_command_output: true, mockAttr: nil)
+        app_name = options[:mockAttr]
         app_id = options[:app_id]
         app_version = options[:app_version]
         build = options[:build]

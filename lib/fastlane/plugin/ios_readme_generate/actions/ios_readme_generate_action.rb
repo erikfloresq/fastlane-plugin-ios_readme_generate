@@ -5,12 +5,12 @@ module Fastlane
 
         ios_readme_generate = Helper::IosReadmeGenerateHelper.new
 
-        ios_readme_generate.trigger(options: params)
+        ios_readme_generate.trigger(options: params, mockAttr: params[:mock])
 
       end
 
       def self.description
-        "Create readme for ios projects"
+        "Create readme for ios projects :D"
       end
 
       def self.authors
