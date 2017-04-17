@@ -25,9 +25,8 @@ module Fastlane
           Action.sh(command,
                     print_command: true,
                     print_command_output: true)
-        rescue Errno::ENOENT => e
+        rescue Exception => e
           UI.error("ios-readme-generator not installed, please install with npm or yarn in global mode.")
-          raise e
         end
 
       end
