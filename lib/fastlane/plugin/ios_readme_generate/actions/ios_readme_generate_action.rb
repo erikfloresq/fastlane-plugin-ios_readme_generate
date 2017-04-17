@@ -3,9 +3,25 @@ module Fastlane
     class IosReadmeGenerateAction < Action
       def self.run(params)
 
-        ios_readme_generate = Helper::IosReadmeGenerateHelper.new
+        app_name = params[:app_name]
+        app_id = params[:app_id]
+        app_version = params[:app_version]
+        build = params[:build]
+        language = params[:language]
+        deployment_target = params[:deployment_target]
+        file_destination = params[:file_destination]
 
-        ios_readme_generate.trigger(options: params, mockAttr: params[:mock])
+        command = ["git-readme-generate",
+                  "--app_name #{app_name}",
+                  "--app_id #{app_id}",
+                  "--app_version #{app_version}",
+                  "--build #{build}",
+                  "--language #{language}",
+                  "--deployment_target #{deployment_target}",
+                  "--file #{file_destination}"].compact.join(" ")
+        Action.sh(command,
+                  print_command: true,
+                  print_command_output: true)
 
       end
 
@@ -28,11 +44,41 @@ module Fastlane
 
       def self.available_options
         [
-          # FastlaneCore::ConfigItem.new(key: :your_option,
-          #                         env_name: "IOS_README_GENERATE_YOUR_OPTION",
-          #                      description: "A description of your option",
-          #                         optional: false,
-          #                             type: String)
+           FastlaneCore::ConfigItem.new(key: :app_name,
+                                   env_name: "IOS_README_APP_NAME",
+                                description: "Add the name of the app",
+                                   optional: true,
+                                       type: String),
+           FastlaneCore::ConfigItem.new(key: :app_id,
+                                   env_name: "IOS_README_APP_ID",
+                                description: "Add the ID of the app",
+                                   optional: true,
+                                       type: String),
+           FastlaneCore::ConfigItem.new(key: :app_version,
+                                   env_name: "IOS_README_APP_VERSION",
+                                description: "Add the App Version of the app",
+                                   optional: true,
+                                       type: String),
+           FastlaneCore::ConfigItem.new(key: :build,
+                                   env_name: "IOS_README_BUILD",
+                                description: "Add the build of the app",
+                                   optional: true,
+                                       type: String),
+           FastlaneCore::ConfigItem.new(key: :language,
+                                   env_name: "IOS_README_LANGUAGE",
+                                description: "Add the language with development the app",
+                                   optional: true,
+                                       type: String),
+           FastlaneCore::ConfigItem.new(key: :deployment_target,
+                                   env_name: "IOS_README_DEPLOYMENT_TARGET",
+                                description: "Add the deployment of the app",
+                                   optional: true,
+                                       type: String),
+           FastlaneCore::ConfigItem.new(key: :file_destination,
+                                   env_name: "IOS_README_file_destination",
+                                description: "Add the destination of the README",
+                                   optional: true,
+                                       type: String)
         ]
       end
 
