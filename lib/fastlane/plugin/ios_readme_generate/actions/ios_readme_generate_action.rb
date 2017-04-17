@@ -3,26 +3,34 @@ module Fastlane
     class IosReadmeGenerateAction < Action
       def self.run(params)
 
-        app_name = params[:app_name]
-        app_id = params[:app_id]
-        app_version = params[:app_version]
-        build = params[:build]
-        language = params[:language]
-        deployment_target = params[:deployment_target]
-        file_destination = params[:file_destination]
+        app_name = addValue("app_name",params[:app_name])
+        app_id = addValue("app_id",params[:app_id])
+        app_version = addValue("app_version",params[:app_version])
+        build = addValue("build",params[:build])
+        language = addValue("language",params[:language])
+        deployment_target = addValue("deployment_target",params[:deployment_target])
+        file_destination = addValue("file_destination",params[:file_destination])
 
         command = ["ios-readme-generator",
-                  "--app_name #{app_name}",
-                  "--app_id #{app_id}",
-                  "--app_version #{app_version}",
-                  "--build #{build}",
-                  "--language #{language}",
-                  "--deployment_target #{deployment_target}",
-                  "--file #{file_destination}"].compact.join(" ")
+                  app_name,
+                  app_id,
+                  app_version,
+                  build,
+                  language,
+                  deployment_target,
+                  file_destination].compact.join(" ")
         Action.sh(command,
                   print_command: true,
                   print_command_output: true)
 
+      end
+
+      def addValue(key,value)
+        if !value.to_s.empty?
+          return "--#{key} \"#{value}\""
+        else
+          return nil
+        end
       end
 
       def self.description
