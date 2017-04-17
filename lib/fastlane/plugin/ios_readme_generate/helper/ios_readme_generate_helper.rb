@@ -5,6 +5,14 @@ module Fastlane
       # as `Helper::IosReadmeGenerateHelper.your_method`
       #
 
+      def addValue(key,value)
+        if !value.to_s.empty?
+          return "--#{key} \"#{value}\""
+        else
+          return nil
+        end
+      end
+
       def self.show_message
         UI.message("Hello from the ios_readme_generate plugin helper!")
       end
