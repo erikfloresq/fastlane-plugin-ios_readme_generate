@@ -11,7 +11,7 @@ module Fastlane
         deployment_target = params[:deployment_target]
         file_destination = params[:file_destination]
 
-        command = ["git-readme-generate",
+        command = ["ios-readme-generator",
                   "--app_name #{app_name}",
                   "--app_id #{app_id}",
                   "--app_version #{app_version}",
