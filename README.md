@@ -12,15 +12,21 @@ fastlane add_plugin ios_readme_generate
 
 ## About ios_readme_generate
 
-Create readme for ios projects
-
-**Note to author:** Add a more detailed description about this plugin here. If your plugin contains multiple actions, make sure to mention them here.
+Create readme for with some data for iOS projects
 
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
-
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
+```ruby
+ios_readme_generate(
+  app_name: "Orbis Mobile",
+  app_id: "pe.orbis.urbania",
+  app_version: "6.6.6",
+  build: "46",
+  language: "Swift",
+  deployment_target: "iOS 9",
+  file_destination: "./docs/README.md"
+)
+```
 
 ## Run tests for this plugin
 
