@@ -13,17 +13,22 @@ module Fastlane
         deployment_target = ios_readme.addValue("deployment_target",params[:deployment_target])
         file_destination = ios_readme.addValue("file_destination",params[:file_destination])
 
-        command = ["ios-readme-generator",
-                  app_name,
-                  app_id,
-                  app_version,
-                  build,
-                  language,
-                  deployment_target,
-                  file_destination].compact.join(" ")
-        Action.sh(command,
-                  print_command: true,
-                  print_command_output: true)
+        begin
+          command = ["ios-readme-generator",
+                    app_name,
+                    app_id,
+                    app_version,
+                    build,
+                    language,
+                    deployment_target,
+                    file_destination].compact.join(" ")
+          Action.sh(command,
+                    print_command: true,
+                    print_command_output: true)
+        rescue Errno::ENOENT => e
+          UI.error("ios-readme-generator not installed, please install with npm or yarn in global mode.")
+          raise e
+        end
 
       end
 
